@@ -1,0 +1,15 @@
+---
+ - name: Mount NFS Share
+   hosts: serverb
+   tasks:
+   
+    - name: Mount by making a configuration in /etc/fstab
+      mount:
+        src: servera:/share1
+        path: /mnt
+        fstype: nfs
+        state: mounted
+
+
+
+
