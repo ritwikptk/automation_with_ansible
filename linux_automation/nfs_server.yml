@@ -18,6 +18,7 @@
       firewalld:
         service: nfs
         state: enabled
+        immediate: yes
         permanent: yes
 
     - name: Create a Share dir
