@@ -1,0 +1,24 @@
+---
+ - name: Using Variable in inventory
+   hosts: all
+   gather_facts: yes
+   tasks:
+    
+    - name: Ensure "{{sw_pkg}}" is "{{st}}"
+      yum:
+        name: "{{sw_pkg}}"
+        state: "{{st}}"
+      register: sans_output
+
+    - name: Verify the output
+      debug: var=sans_output
+
+    - name: Create a file in all servers
+      copy:
+        content: "{{ansible_python_version}}"
+        dest: /tmp/sansbound
+
+    - name: Install Software
+      yum:
+        name: "{{ansible_local.sansbound.sansbound.special}}"
+        state: present

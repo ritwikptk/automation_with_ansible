@@ -1,0 +1,12 @@
+---
+ - name: Using Variable in Playbook
+   hosts: all
+   vars:
+    sw_pkg: httpd
+    st: present
+   tasks:
+    
+    - name: Ensure "{{sw_pkg}}" is "{{st}}"
+      yum:
+        name: "{{sw_pkg}}"
+        state: "{{st}}"

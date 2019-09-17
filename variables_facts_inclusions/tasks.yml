@@ -1,0 +1,10 @@
+---
+ - name: Create a User
+   user:
+    name: "{{name}}"
+    state: "{{state}}"
+
+ - name: Install Softwware
+   yum:
+    name: "{{sw_pkg}}"
+    state: "{{st}}"

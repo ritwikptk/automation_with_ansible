@@ -1,0 +1,11 @@
+[chennai]
+servera
+serverb
+
+[mumbai]
+serverc
+serverd
+
+[linux:children]
+chennai
+mumbai
