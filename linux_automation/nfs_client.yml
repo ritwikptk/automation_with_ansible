@@ -10,6 +10,34 @@
         fstype: nfs
         state: mounted
 
+ - name: Mount via Autofs
+   hosts: serverb
+   tasks:
+    
+    - name: Install AutoFS Software
+      yum:
+        name: autofs
+        state: present
 
+    - name: Start and Enable AutoFS Service
+      service:
+        name: autofs
+        state: started
+        enabled: yes
 
+    - name: Edit auto.master Config File
+      lineinfile:
+        path: /etc/auto.master
+        line: "/mnt   /etc/auto.home"
+        state: present
 
+    - name: Edit auto.home Config File
+      copy:
+        content: "share1 -ro,sync servera:/share1"
+        dest: /etc/auto.home
+
+    - name: Restart AutoFS Service
+      service:
+        name: autofs
+        state: restarted
+...

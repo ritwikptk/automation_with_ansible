@@ -8,13 +8,13 @@
         name: nfs-utils
         state: present
 
-    - name: Start and Enable Service
+    - name: Start and Enable NFS Service
       service:
         name: nfs-server
         state: started
         enabled: yes
 
-    - name: Allow Firewall
+    - name: Allow NFS traffic in Firewall
       firewalld:
         service: nfs
         state: enabled
@@ -28,10 +28,12 @@
         mode: 0775
 
     - name: Edit NFS Configuration
-      copy:
-        content: "/share1 serverb(ro)"
-        dest: /etc/exports
+      lineinfile:
+        path: /etc/exports
+        line: "/share1 172.25.250.0/24(ro)"
+        state: present
 
     - name: Update the Share
       shell:
         cmd: exportfs -r
+...

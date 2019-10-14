@@ -1,0 +1,24 @@
+---
+ - name: Ensure "{{web_pkg}}" and "{{file_pkg }}" software is "{{state}}"
+   hosts: chennai
+   vars:
+    web_pkg: httpd
+    file_pkg: vsftpd
+    state: present
+   tasks:
+    
+    - name: Ensure "{{web_pkg}}" is "{{state}}"
+      yum:
+        name: "{{web_pkg}}"
+        state: "{{state}}"
+      register: web_out
+
+    - debug: var=web_out
+
+    - name: Ensure "{{file_pkg}}" is "{{state}}"
+      yum:
+        name: "{{file_pkg}}"
+        state: "{{state}}"
+      register: file_out
+
+    - debug: var=file_out

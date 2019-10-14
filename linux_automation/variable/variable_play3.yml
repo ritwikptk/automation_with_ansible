@@ -1,0 +1,14 @@
+---
+ - name: Ensure "{{web_pkg}}" and "{{file_pkg }}" software is "{{state}}"
+   hosts: chennai
+   tasks:
+    
+    - name: Ensure "{{web_pkg}}" is "{{state}}"
+      yum:
+        name: "{{web_pkg}}"
+        state: "{{state}}"
+
+    - name: Ensure "{{file_pkg}}" is "{{state}}"
+      yum:
+        name: "{{file_pkg}}"
+        state: "{{state}}"

@@ -1,0 +1,4 @@
+---
+ web_pkg: httpd
+ file_pkg: vsftpd
+ state: present

@@ -1,0 +1,14 @@
+servera web_pkg=httpd file_pkg=vsftpd state=present
+
+[chennai]
+servera
+serverb
+
+[mumbai]
+serverc
+serverd
+
+[chennai:vars]
+web_pkg=httpd
+file_pkg=vsftpd
+state=present
